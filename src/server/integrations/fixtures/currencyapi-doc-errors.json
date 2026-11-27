@@ -1,0 +1,6 @@
+{
+  "401": {"message":"Unauthorized","error":{"code":"invalid_api_key","message":"Unauthorized"},"actions":{"sign_up":"https://app.currencyapi.com/register","docs":"https://currencyapi.com/docs"}},
+  "403": {"message":"You are not allowed to use this endpoint, please upgrade your plan","error":{"code":"plan_upgrade_required","message":"You are not allowed to use this endpoint, please upgrade your plan"},"info":"https://currencyapi.com/docs/status-codes#_403"},
+  "422": {"message":"Validation error","errors":{"currencies":["The selected currencies is invalid."]},"info":"https://currencyapi.com/docs/status-codes#_422"},
+  "429": {"message":"You have hit your rate limit or your monthly limit","error":{"code":"rate_limit_exceeded","message":"You have hit your rate limit or your monthly limit"},"quota":{"limit":300,"used":300,"remaining":0,"resets_at":"2026-12-01T00:00:00Z"}}
+}

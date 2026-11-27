@@ -1,0 +1,35 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: landed_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      # 1. In-process PostgreSQL (PGlite): fast, single connection.
+      - run: npm test
+      # 2. Real PostgreSQL server: same suites, true multi-connection concurrency and triggers.
+      - run: npm test
+        env:
+          TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/landed_test
+      - run: npm run build
+        env:
+          LANDED_PSEUDONYM_PEPPER: ci-build-pepper-0123456789abcdef0123456789

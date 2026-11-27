@@ -1,0 +1,13 @@
+node_modules
+.next
+.data
+next-env.d.ts
+*.tsbuildinfo
+test-results
+*.log
+.dev.log
+.prod.log
+.build.log
+.env
+.env.*
+.env.example

@@ -1,0 +1,6 @@
+[35m.env.example[m[36m:[m[32m38[m[36m:[mSTRIPE_SECRET_KEY=[1;31msk_test_[m51UgGlSJQw8fSLGcpJsw9KsxCxGV0vzA9lYZ9MQBaK0k4RW9dwVrVwBByG8qZ80nDn3qB7gzhbU8wXHzthR8Lm3eX00QOQtNzqv
+[35msrc/server/integrations/billing/stripe.test.ts[m[36m:[m[32m33[m[36m:[m    const s = new StripeAdapter({ secretKey: "[1;31msk_test_[mabc", fetch: f.fetch });
+[35msrc/server/integrations/billing/stripe.test.ts[m[36m:[m[32m38[m[36m:[m    expect(c.headers.get("authorization")).toBe("Bearer [1;31msk_test_[mabc");
+[35msrc/server/integrations/billing/stripe.test.ts[m[36m:[m[32m54[m[36m:[m    const s = new StripeAdapter({ secretKey: "[1;31msk_test_[mbad", fetch: fakeFetch(() => ({ status: 401, body: '{"error":{"message":"Invalid API Key"}}' })).fetch });
+[35msrc/server/integrations/billing/stripe.ts[m[36m:[m[32m34[m[36m:[m    return this.key.startsWith("[1;31msk_test_[m") || this.key.startsWith("rk_test_") ? "test" : "live";
+[35msrc/server/integrations/live.test.ts[m[36m:[m[32m60[m[36m:[mdescribe.skipIf(!LIVE || !process.env.STRIPE_SECRET_KEY?.startsWith("[1;31msk_test_[m") || !process.env.STRIPE_PRICE_ID)("live: Stripe test mode (needs [1;31msk_test_[m key + STRIPE_PRICE_ID)", () => {
